@@ -2,11 +2,11 @@
 
 ## Tecnologias utilizadas no projeto:
 
-- <img src="https://img.shields.io/static/v1?label=Code&message=Python&color=blue&style=plastic&labelColor=black&logo=python"/>
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 
-- <img src="https://img.shields.io/static/v1?label=Code&message=Terraform&color=purple&style=plastic&labelColor=black&logo=Terraform"/>
+![Terraform](https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white)
 
-- <img src="https://img.shields.io/badge/Amazon_AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white"/>
+![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
 
 ## Features :fire: :
 
@@ -37,11 +37,11 @@ O objetivo desse projeto é oferecer uma interface amigável, intuitiva e simple
 
 ## Instalação :gear: : 
 
-### Instalação do Terraform <img src="https://img.shields.io/static/v1?label=Code&message=Terraform&color=purple&style=plastic&labelColor=black&logo=Terraform"/>
+### Instalação do Terraform
 
 Para instalar o terraform siga o tutorial da HashiCorp disponível em https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
 
-### Instalação do AWS CLI <img src="https://img.shields.io/badge/Amazon_AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white"/>
+### Instalação do AWS CLI
 
 Para instalar a AWS CLI siga o tutorial da AWS disponível em https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 
