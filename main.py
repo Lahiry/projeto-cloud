@@ -1054,13 +1054,15 @@ def create_user():
                     restriction = {
                         "name": restriction_name,
                         "description": restriction_description,
-                        "actions": action_restrictions,
-                        "resources": resources_restrictions
+                        "actions": action_restrictions.split(","),
+                        "resources": resources_restrictions.split(",")
                     }
+
+                    add_restriction = False
 
             elif add_restriction in ['n','N','no', 'NO']:
                 restriction = {
-                    "name": "user_full_access",
+                    "name": "user_full_access_" + str(len(users) + 1),
                     "description": "Full Access",
                     "actions": ['*'],
                     "resources": ['*']
@@ -1093,6 +1095,24 @@ def create_user():
 
                 with open('.auto.tfvars.json', 'w') as file:
                     json.dump(terraform_variables, file, indent=2, separators=(',',': '))
+
+                if region == "1":
+                    with open('../sa-east-1/.auto.tfvars.json', 'r') as file:
+                        terraform_variables = json.load(file)
+
+                    terraform_variables["users"] = users
+
+                    with open('../sa-east-1/.auto.tfvars.json', 'w') as file:
+                        json.dump(terraform_variables, file, indent=2, separators=(',',': '))
+
+                elif region == "2":
+                    with open('../us-east-1/.auto.tfvars.json', 'r') as file:
+                        terraform_variables = json.load(file)
+
+                    terraform_variables["users"] = users
+
+                    with open('../us-east-1/.auto.tfvars.json', 'w') as file:
+                        json.dump(terraform_variables, file, indent=2, separators=(',',': '))
 
                 os.system('terraform apply -auto-approve')
 
@@ -1182,6 +1202,24 @@ def delete_user():
                 with open('.auto.tfvars.json', 'w') as file:
                     json.dump(terraform_variables, file, indent=2, separators=(',',': '))
 
+                if region == "1":
+                    with open('../sa-east-1/.auto.tfvars.json', 'r') as file:
+                        terraform_variables = json.load(file)
+
+                    terraform_variables["users"] = users
+
+                    with open('../sa-east-1/.auto.tfvars.json', 'w') as file:
+                        json.dump(terraform_variables, file, indent=2, separators=(',',': '))
+
+                elif region == "2":
+                    with open('../us-east-1/.auto.tfvars.json', 'r') as file:
+                        terraform_variables = json.load(file)
+
+                    terraform_variables["users"] = users
+
+                    with open('../us-east-1/.auto.tfvars.json', 'w') as file:
+                        json.dump(terraform_variables, file, indent=2, separators=(',',': '))
+
                 os.system('terraform apply -auto-approve')
 
                 print("\033[32mUsuário deletado com sucesso!" + "\033[0m")
@@ -1223,10 +1261,10 @@ show_opening_message = True
 while True:
 
     if show_opening_message:
-        display_opening_message()
+        region = display_opening_message()
         show_opening_message = False
 
-    region = display_main_menu()
+    display_main_menu()
 
     menu_answer = input("Digite o número da opção desejada: ")
 
@@ -1317,7 +1355,3 @@ while True:
         print("\033[32mSaindo da plataforma..." + "\033[0m")
         sleep(2)
         break
-        
-# TO DO:
-#1 FRESCURAS FRONTEND
-#2 DEPOIS DE TODOS OS TESTES substituir os.system por subprocess.run
